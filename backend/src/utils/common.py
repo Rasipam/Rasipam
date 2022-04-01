@@ -12,15 +12,15 @@ ATTRIBUTES = {
     "Badminton (Male)": ["Ball Position",
                          "Ball Height",
                          "Hit Technique"],
-    "Badminton (Female)": ["BallPosition",
-                           "StrikePosition",
-                           "StrikeTech"],
+    "Badminton (Female)": ["Ball Position",
+                           "Ball Height",
+                           "Hit Technique"],
     "Tennis (Male)": ["Ball Position",
                       "Hitting Pose",
                       "Hit Technique"],
-    "Tennis (Female)": ["BallPosition",
-                        "StrikePosition",
-                        "StrikeTech"],
+    "Tennis (Female)": ["Ball Position",
+                        "Hitting Pose",
+                        "Hit Technique"],
 }
 
 

@@ -73,7 +73,6 @@ class MineAlgInterface:
         sequence_filename = os.path.join(self.store_path, OUTPUT_DIR, SEQUENCE_FILE)
 
         attributes_names_str = ' '.join([attribute.replace(' ', '') for attribute in self.attributes])
-
         mdl_ipam.load_data(file_type.value,
                            self.player,
                            input_filenames,

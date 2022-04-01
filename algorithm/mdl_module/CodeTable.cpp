@@ -104,7 +104,7 @@ double CodeTable::compute_sz_ct_c(Sequence *s) {
         size += sz_x_ct;
     }
 
-    size += mu->intcost(non_singletons +
+    size += 10 * mu->intcost(non_singletons +
                         1);                                            //TERM: L_N( |P|+1 )						-> #non-singletons
 
     size += mu->intcost(non_singl_usg +

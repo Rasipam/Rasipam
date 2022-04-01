@@ -98,7 +98,7 @@ void mdl_run(MDLParameters &arg, const string& insert_patterns_filename, bool te
     auto *mdl = new mdl_enter(&parameters, insert_patterns);
     cout << "mdl_module time: " << (clock() - t0)*1.0/CLOCKS_PER_SEC << "s" << endl;
     if (!test_flag) {
-        mdl->save_result_files();
+        mdl->save_result_files(5);
     }
     if (test_flag) {
         ofstream time_stream;
@@ -240,7 +240,21 @@ mdl_enter::mdl_enter(Parameters *par, json& code_table, vector<int>& delete_patt
     black_list = new pattern_set;
     white_list = new pattern_set;
 
+    //build singletons
     int **tree_ids = par->seq->get_tree_ids();
+    int nr_singletons = par->alphabet_size;
+    int *alphabet_sizes = par->alphabet_sizes;
+    for (int aid = 0; aid < par->nr_of_attributes; ++aid) {
+        for (int sym = 0; sym < alphabet_sizes[aid]; ++sym) {
+            auto **event_sets = new attribute_set *[1];
+            event_sets[0] = new attribute_set;
+            event_sets[0]->insert(new Attribute(sym, aid, 0, tree_ids[aid][sym]));
+            auto *p = new Pattern(1, event_sets, par->seq);
+            ct->insert_pattern(p);
+            ct_on_usg->insert(p);
+        }
+    }
+
     for (auto & pattern : code_table) {
         json p = pattern["hits"];
         auto **event_sets = new attribute_set *[p.size()];
@@ -387,7 +401,7 @@ void mdl_modify_and_run(const string& old_model_pattern_filename, vector<int>& d
 
 
     clock_t t0 = clock();
-    auto* new_mdl_model = new mdl_enter(&parameters, old_model_patterns["code_table"], delete_patterns_id, insert_patterns);
+    auto* new_mdl_model = new mdl_enter(&parameters, old_model_patterns["patterns"], delete_patterns_id, insert_patterns);
     cout << "mdl_module time: " << (clock() - t0)*1.0/CLOCKS_PER_SEC << "s" << endl;
     delete new_mdl_model;
 }
@@ -498,7 +512,7 @@ void mdl_enter::save_debug_files(usg_sz *current_usgSz, double init_sz) {
 }
 
 
-void mdl_enter::save_result_files() {
+void mdl_enter::save_result_files(int min_sup) {
     string pattern_file = par->output_dir + "/" + par->pattern_file;
     ofstream pattern_stream;
     pattern_stream.open(pattern_file, ios::out);
@@ -514,7 +528,7 @@ void mdl_enter::save_result_files() {
     for (int i = 0, seq_i = 0; i < par->nr_events; ++i, ++seq_i) {
         auto events = par->seq->mev_time[i];
         for (int j = 0; j < events->get_size(); ++j) {
-            if (events->is_covered[j]->get_length() <= 1) {
+            if (events->is_covered[j]->get_length() <= 1 || events->is_covered[j]->get_usage() < min_sup) {
                 continue;
             }
             if (pat_id.find(events->is_covered[j]) == pat_id.end()) {

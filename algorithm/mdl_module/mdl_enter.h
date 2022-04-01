@@ -84,7 +84,7 @@ public:
     Cover *get_cover() { return cover; }
 
     void save_debug_files(usg_sz *current_usgSz, double init_sz);
-    void save_result_files();
+    void save_result_files(int min_sup = 0);
 
     void insert_patterns(nlohmann::json& insert_patterns);
 

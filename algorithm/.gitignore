@@ -156,3 +156,4 @@ cython_debug/
 */.DS_Store
 
 quantitative_test/
+data/
