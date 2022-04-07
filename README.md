@@ -2,7 +2,9 @@
 
 ![](./demo.gif)
 
-[Download this video.](https://anonymous.4open.science/api/repo/Rasipam-A695/file/demo.mp4)
+#### *This is a GIF version demo. Download the original video [here](https://anonymous.4open.science/api/repo/Rasipam-A695/file/demo.mp4) (1080P，with audio).*
+
+## Overview
 
 This is the code accompanying the paper for the IEEE VIS 2022 submission, *Rasipam: Interactive Pattern Mining of Multivariate Event Sequences in Racket Sports*
 
