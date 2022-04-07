@@ -2,6 +2,8 @@
 
 ![](./demo.gif)
 
+[Download this video.](https://anonymous.4open.science/api/repo/Rasipam-A695/file/demo.mp4)
+
 This is the code accompanying the paper for the IEEE VIS 2022 submission, *Rasipam: Interactive Pattern Mining of Multivariate Event Sequences in Racket Sports*
 
 The project is split into three parts: algorithm, backend, and frontend. Algorithm is writen in C++ and can be installed as a Python package. Backend is writen in Python and built on [FastAPI](https://fastapi.tiangolo.com/). Frontend is writen in JavaScript [React](https://reactjs.org/).
