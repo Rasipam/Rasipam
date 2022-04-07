@@ -1,6 +1,6 @@
 # Rasipam: Interactive Pattern Mining of Multivariate Event Sequences in Racket Sports
 
-https://user-images.githubusercontent.com/6877923/115474571-03c75800-a23e-11eb-8096-8973aad5fa9f.mp4
+https://raw.githubusercontent.com/Rasipam/Rasipam/master/demo.mp4
 
 This is the code accompanying the paper for the IEEE VIS 2022 submission, *Rasipam: Interactive Pattern Mining of Multivariate Event Sequences in Racket Sports*
 
