@@ -2,7 +2,7 @@
 
 ![](./demo.gif)
 
-#### *This is a GIF version demo. Download the original video [here](https://anonymous.4open.science/api/repo/Rasipam-A695/file/demo.mp4) (1080P，with audio).*
+#### *This is a GIF version demo. Download the original video [here](https://anonymous.4open.science/r/Rasipam-A695/demo.mp4) (1080P，with audio).*
 
 ## Overview
 
